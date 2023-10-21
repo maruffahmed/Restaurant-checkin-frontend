@@ -11,7 +11,7 @@ export async function AuthenticatedFetch(
   let res = await axios(url, {
     method: "GET",
     headers: {
-      Authorization: `bearer ${session?.token}`,
+      Authorization: `bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
     },
     ...options,
