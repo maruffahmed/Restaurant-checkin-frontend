@@ -1,0 +1,130 @@
+/* const HEADER_HEIGHT = rem(84); */
+
+/* 
+const useStyles = createStyles((theme) => ({
+  inner: {
+    height: HEADER_HEIGHT,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+
+  burger: {
+    [theme.fn.largerThan('sm')]: {
+      display: 'none',
+    },
+  },
+
+  links: {
+    paddingTop: theme.spacing.lg,
+    height: HEADER_HEIGHT,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+
+    [theme.fn.smallerThan('sm')]: {
+      display: 'none',
+    },
+  },
+
+  mainLinks: {
+    marginRight: `calc(${theme.spacing.sm} * -1)`,
+  },
+
+  mainLink: {
+    textTransform: 'uppercase',
+    fontSize: rem(13),
+    color: theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[6],
+    padding: `${rem(7)} ${theme.spacing.sm}`,
+    fontWeight: 700,
+    borderBottom: `${rem(2)} solid transparent`,
+    transition: 'border-color 100ms ease, color 100ms ease',
+
+    '&:hover': {
+      color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+      textDecoration: 'none',
+    },
+  },
+
+  secondaryLink: {
+    color: theme.colorScheme === 'dark' ? theme.colors.dark[2] : theme.colors.gray[6],
+    fontSize: theme.fontSizes.xs,
+    textTransform: 'uppercase',
+    transition: 'color 100ms ease',
+
+    '&:hover': {
+      color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+      textDecoration: 'none',
+    },
+  },
+
+  mainLinkActive: {
+    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+    borderBottomColor: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 5 : 6],
+  },
+})); */
+
+.header {
+  /* min-height: rem(84px); */
+  /* margin-bottom: rem(120px); */
+  background-color: var(--mantine-color-body);
+  border-bottom: rem(1px) solid
+    light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-4));
+}
+
+.mainLinks {
+  margin-right: calc(var(--mantine-spacing-sm) * -1);
+}
+
+.mainLink {
+  text-transform: uppercase;
+  font-size: var(--mantine-font-size-xs);
+  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-1));
+  padding: rem(7px) var(--mantine-spacing-sm);
+  font-weight: 700;
+  border-bottom: rem(2px) solid transparent;
+  transition: border-color 100ms ease, color 100ms ease;
+}
+.mainLink:hover {
+  color: light-dark(var(--mantine-color-primary-6), var(--mantine-color-white));
+  text-decoration: none;
+}
+.mainLink[data-active] {
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  border-bottom-color: var(--mantine-color-primary-6);
+}
+
+.secondaryLink {
+  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-1));
+  font-size: var(--mantine-font-size-xs);
+  text-transform: uppercase;
+  transition: color 100ms ease;
+}
+.secondaryLink:hover {
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  text-decoration: none;
+}
+
+.user {
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+  border-radius: var(--mantine-radius-sm);
+  transition: background-color 100ms ease;
+}
+@media (max-width: $mantine-breakpoint-xs) {
+  .user svg {
+    display: none;
+  }
+}
+.user:hover {
+  background-color: light-dark(
+    var(--mantine-color-white),
+    var(--mantine-color-dark-8)
+  );
+}
+.userActive {
+  background-color: light-dark(
+    var(--mantine-color-white),
+    var(--mantine-color-dark-8)
+  );
+}

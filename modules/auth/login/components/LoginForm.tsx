@@ -2,15 +2,10 @@
 import React, { useMemo } from "react";
 // @ts-ignore
 import { experimental_useFormState as useFormState } from "react-dom";
+// @ts-ignore
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { LoginAction } from "@/modules/auth/login/actions";
-import {
-  Alert,
-  Button,
-  Checkbox,
-  PasswordInput,
-  TextInput,
-} from "@mantine/core";
+import { Alert, Button, PasswordInput, TextInput } from "@mantine/core";
 import { z } from "zod";
 import { IconInfoCircle } from "@tabler/icons-react";
 import { useSearchParams } from "next/navigation";
@@ -22,12 +17,7 @@ const initialState = {
   error: null,
 };
 
-// onSubmit props for testing environtment only, in real world we are using NextJs 13 server action with <form/> action attribute
-export default function LoginForm({
-  onSubmit = () => {},
-}: {
-  onSubmit?: () => void;
-}) {
+export default function LoginForm() {
   const params = useSearchParams();
   const error = useMemo(
     () => params.get("error"),
@@ -63,11 +53,11 @@ export default function LoginForm({
         ))
       ) : null}
       {/* Using Next JS 13 server action */}
-      <form action={formAction} onSubmit={onSubmit}>
+      <form action={formAction}>
         <TextInput
           type="email"
           name="email"
-          label="E-mail address"
+          label="Email"
           placeholder="hello@gmail.com"
           size="md"
           withAsterisk
@@ -83,7 +73,6 @@ export default function LoginForm({
           withAsterisk
           required
         />
-        <Checkbox name="stayLogin" label="Stay logged in" mt="xl" size="md" />
         <LoginFormSubmitButton />
       </form>
     </>
