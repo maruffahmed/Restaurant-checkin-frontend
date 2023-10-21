@@ -8,7 +8,7 @@ export const useGetProfile = () => {
 
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["me"],
-    queryFn: () => fetchFunction.get("/auth/me"),
+    queryFn: () => fetchFunction.get("/users/me"),
   });
   return {
     data: {
@@ -45,7 +45,7 @@ export const useUpdateProfileAvatar = () => {
     },
     [fetchFunction]
   );
-  const { mutate, isLoading, isError, data } = useMutation({
+  const { mutate, isError, data, isPending } = useMutation({
     mutationFn: (file: File) => uploadAvatar(file),
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -56,7 +56,7 @@ export const useUpdateProfileAvatar = () => {
 
   return {
     mutate,
-    isLoading,
+    isPending,
     isError,
     data,
   };

@@ -3,13 +3,13 @@ import { IUsers } from "./users";
 export interface ILoginUser extends IUsers {}
 
 export interface ILoginResponseToken {
+  accessToken: string;
   refreshToken: string;
-  token: string;
-  tokenExpires: number;
 }
 
-export interface ILoginResponse extends ILoginResponseToken {
-  user: ILoginUser;
+export interface ILoginResponse {
+  success: boolean;
+  data: ILoginResponseToken;
 }
 
 export interface ILoginErrorResponse {

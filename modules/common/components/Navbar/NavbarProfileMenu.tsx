@@ -28,8 +28,7 @@ import { useGetProfile } from "@/modules/hooks/profile";
 export default function NavbarProfileMenu() {
   const { data: me, isLoading } = useGetProfile();
   const avatarAlt =
-    me.data?.firstName.slice(0, 1) + me.data?.lastName.slice(0, 1);
-  const avatarSrc = me?.data?.photo?.path;
+    me.data?.data.firstName.slice(0, 1) + me.data?.data.lastName.slice(0, 1);
 
   const theme = useMantineTheme();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
@@ -51,16 +50,13 @@ export default function NavbarProfileMenu() {
           visibleFrom="base"
         >
           <Group gap={7}>
-            {/* <Avatar alt={me.data.firstName} radius="xl" size={30} /> */}
-            <Avatar src={avatarSrc || ""} color="primary" radius="xl" size={30}>
-              {avatarAlt}
-            </Avatar>
+            <Avatar alt={avatarAlt} radius="xl" size={30} />
             <Stack gap={2} mr={3} visibleFrom="sm">
               <Text fw={500} size="xs" lh={1}>
-                {me.data.firstName}
+                {me.data.data.firstName}
               </Text>
               <Text c="gray.6" size="xs">
-                {me.data.email}
+                {me.data.data.email}
               </Text>
             </Stack>
             <IconChevronDown

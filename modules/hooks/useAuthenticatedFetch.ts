@@ -4,11 +4,12 @@ import { useEffect } from "react";
 
 const useAuthenticatedFetch = () => {
   const { data: session } = useSession();
+  console.log("session", session);
   useEffect(() => {
     const requestInterceptor = axios.interceptors.request.use(
       (config) => {
         if (!config.headers["Authorization"]) {
-          config.headers["Authorization"] = `Bearer ${session?.token}`;
+          config.headers["Authorization"] = `Bearer ${session?.accessToken}`;
         }
         return config;
       },
@@ -18,7 +19,7 @@ const useAuthenticatedFetch = () => {
     return () => {
       axios.interceptors.request.eject(requestInterceptor);
     };
-  }, [session?.token]);
+  }, [session?.accessToken]);
 
   return axios;
 };

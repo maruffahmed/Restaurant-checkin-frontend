@@ -1,16 +1,7 @@
 "use client";
-import {
-  Container,
-  Anchor,
-  Group,
-  Burger,
-  Divider,
-  Button,
-  Flex,
-} from "@mantine/core";
+import { Container, Anchor, Group, Burger, Divider, Flex } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
-import { IconPlus } from "@tabler/icons-react";
 import classes from "./index.module.css";
 import Brand from "../Brand";
 import { Fragment } from "react";
@@ -69,13 +60,6 @@ export default function Navbar() {
                 ) : (
                   secondaryItems
                 )}
-                <Button
-                  leftSection={<IconPlus size={14} />}
-                  variant="light"
-                  color="muted.9"
-                >
-                  Post a new ad
-                </Button>
               </Group>
               <Group
                 gap={20}

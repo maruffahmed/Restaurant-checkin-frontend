@@ -16,18 +16,19 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials: any) {
+        console.log(credentials);
         try {
-          const res = await axios("/auth/email/login", {
+          const res = await axios("/auth/sign-in", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            data: JSON.stringify(credentials),
+            data: JSON.stringify({
+              email: credentials.email,
+              password: credentials.password,
+            }),
           });
-          const user: ILoginResponse | ILoginErrorResponse = res.data;
-          if ("errors" in user) {
-            return null;
-          }
+          const user = res.data.data;
           return user;
         } catch (error) {
           return null;
@@ -37,21 +38,6 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     jwt: async ({ token, user }) => {
-      const isTokenExpired = Date.now() > token?.tokenExpires;
-      if (isTokenExpired) {
-        // refresh token
-        const res = await axios.post(
-          "/auth/refresh",
-          {},
-          {
-            headers: {
-              Authorization: `Bearer ${token?.refreshToken}`,
-            },
-          }
-        );
-        const data = res.data;
-        return { ...token, ...data };
-      }
       return { ...token, ...user };
     },
     session: ({ session, token }) => {
