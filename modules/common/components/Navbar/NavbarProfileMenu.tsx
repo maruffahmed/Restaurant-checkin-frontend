@@ -68,54 +68,6 @@ export default function NavbarProfileMenu() {
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Item
-          leftSection={
-            <IconHeart
-              style={{ width: rem(16), height: rem(16) }}
-              color={theme.colors.red[6]}
-              stroke={1.5}
-            />
-          }
-        >
-          Liked posts
-        </Menu.Item>
-        <Menu.Item
-          leftSection={
-            <IconStar
-              style={{ width: rem(16), height: rem(16) }}
-              color={theme.colors.yellow[6]}
-              stroke={1.5}
-            />
-          }
-        >
-          Saved posts
-        </Menu.Item>
-        <Menu.Item
-          leftSection={
-            <IconMessage
-              style={{ width: rem(16), height: rem(16) }}
-              color={theme.colors.primary[6]}
-              stroke={1.5}
-            />
-          }
-        >
-          Your comments
-        </Menu.Item>
-
-        <Menu.Label>Settings</Menu.Label>
-        <Menu.Item
-          component={Link}
-          href="/profile"
-          leftSection={
-            <IconSettings
-              style={{ width: rem(16), height: rem(16) }}
-              stroke={1.5}
-            />
-          }
-        >
-          Account settings
-        </Menu.Item>
-
-        <Menu.Item
           onClick={() =>
             signOut({
               callbackUrl: "/",
